@@ -1,0 +1,184 @@
+{
+  "data": {
+    "title": "titulo menucam",
+    "color": "84A24",
+    "type": "b2b",
+    "logo": "",
+    "options": [
+      {
+        "name": "menu1",
+        "data": [
+          {
+            "title": "proCol",
+            "options": [
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 2",
+                "description": "Descripcion de title 2",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 3",
+                "description": "Descripcion de title 3",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 4",
+                "description": "Descripcion de title 4",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 5",
+                "description": "Descripcion de title 5",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 6",
+                "description": "Descripcion de title 6",
+                "link": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "title": "Estrategias",
+            "options": [
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 2",
+                "description": "Descripcion de title 2",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 3",
+                "description": "Descripcion de title 3",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 4",
+                "description": "Descripcion de title 4",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 5",
+                "description": "Descripcion de title 5",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 6",
+                "description": "Descripcion de title 6",
+                "link": "",
+                "image": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "menu1",
+        "data": [
+          {
+            "title": "proCol",
+            "options": [
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "title": "proCol",
+            "options": [
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              },
+              {
+                "title": "opcion 1",
+                "description": "Descripcion de title 1",
+                "link": "",
+                "image": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
