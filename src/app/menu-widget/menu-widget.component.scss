@@ -1,4 +1,64 @@
-.title {
-  font-size: 30px;
-  color: red;
+.menu-container {
+  position: relative;
+}
+
+.menu-trigger {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background-color: white;
+
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  .submenu-options {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    background-color: #f5f5f5;
+    border-right: 1px solid #ccc;
+
+    .submenu-option {
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+
+      .grid-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    }
+  }
 }

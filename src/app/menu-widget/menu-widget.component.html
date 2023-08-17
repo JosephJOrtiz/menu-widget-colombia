@@ -12,13 +12,14 @@
         </li>
       </ul>
       <div class="content">
-        <ng-container *ngFor="let options of subOptions">
-          <div class="grid">
-            <h2>{{ options.title }}</h2>
-            <p>{{ options.description }}</p>
-          </div>
-        </ng-container>
-        <!-- {{ selectedMenuContent }} -->
+        <div class="grid-container">
+          <ng-container *ngFor="let options of subOptions">
+            <div class="grid-item">
+              <h2>{{ options.title }}</h2>
+              <p>{{ options.description }}</p>
+            </div>
+          </ng-container>
+        </div>
       </div>
     </div>
   </ng-container>

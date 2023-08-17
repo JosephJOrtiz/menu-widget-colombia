@@ -29,5 +29,6 @@ export class MenuWidgetComponent implements OnInit {
   }
   changeContent(items: any[]) {
     this.subOptions = items;
+    console.log(this.subOptions);
   }
 }
