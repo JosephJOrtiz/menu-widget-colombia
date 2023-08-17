@@ -1,3 +1,25 @@
-<p class="title">{{ this.data?.title }}</p>
-<h1>{{ text }}</h1>
-<button (click)="onClick()">Change text</button>
+<section class="menu-container">
+  <p class="title">{{ this.data?.title }}</p>
+  <ng-container *ngFor="let item of this.data?.options">
+    <div class="menu-trigger" (click)="toggleMenu()">{{ item.name }}</div>
+    <div class="dropdown" *ngIf="isMenuOpen">
+      <ul class="menu-list">
+        <li
+          *ngFor="let subItem of item.data"
+          (click)="changeContent(subItem.options)"
+        >
+          {{ subItem.title }}
+        </li>
+      </ul>
+      <div class="content">
+        <ng-container *ngFor="let options of subOptions">
+          <div class="grid">
+            <h2>{{ options.title }}</h2>
+            <p>{{ options.description }}</p>
+          </div>
+        </ng-container>
+        <!-- {{ selectedMenuContent }} -->
+      </div>
+    </div>
+  </ng-container>
+</section>

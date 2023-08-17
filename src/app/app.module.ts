@@ -9,15 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent, MenuWidgetComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
-  bootstrap: [],
+  bootstrap: [AppComponent],
 })
-// export class AppModule {}
-export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {}
-  ngDoBootstrap(appRef: ApplicationRef) {
-    const menuWidget = createCustomElement(MenuWidgetComponent, {
-      injector: this.injector,
-    });
-    customElements.define('menu-widget', menuWidget);
-  }
-}
+export class AppModule {}
+// export class AppModule implements DoBootstrap {
+//   constructor(private injector: Injector) {}
+//   ngDoBootstrap(appRef: ApplicationRef) {
+//     const menuWidget = createCustomElement(MenuWidgetComponent, {
+//       injector: this.injector,
+//     });
+//     customElements.define('menu-widget', menuWidget);
+//   }
+// }

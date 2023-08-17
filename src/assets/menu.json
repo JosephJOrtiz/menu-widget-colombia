@@ -53,37 +53,37 @@
             "title": "Estrategias",
             "options": [
               {
-                "title": "opcion 1",
+                "title": "Estrategia 1",
                 "description": "Descripcion de title 1",
                 "link": "",
                 "image": ""
               },
               {
-                "title": "opcion 2",
+                "title": "Estrategia 2",
                 "description": "Descripcion de title 2",
                 "link": "",
                 "image": ""
               },
               {
-                "title": "opcion 3",
+                "title": "Estrategia 3",
                 "description": "Descripcion de title 3",
                 "link": "",
                 "image": ""
               },
               {
-                "title": "opcion 4",
+                "title": "Estrategia 4",
                 "description": "Descripcion de title 4",
                 "link": "",
                 "image": ""
               },
               {
-                "title": "opcion 5",
+                "title": "Estrategia 5",
                 "description": "Descripcion de title 5",
                 "link": "",
                 "image": ""
               },
               {
-                "title": "opcion 6",
+                "title": "Estrategia 6",
                 "description": "Descripcion de title 6",
                 "link": "",
                 "image": ""
@@ -93,10 +93,10 @@
         ]
       },
       {
-        "name": "menu1",
+        "name": "menu2",
         "data": [
           {
-            "title": "proCol",
+            "title": "Col",
             "options": [
               {
                 "title": "opcion 1",

@@ -11,6 +11,8 @@ export class MenuWidgetComponent implements OnInit {
   @Input() color: string = '';
   public text: string = 'hola';
   public data: any;
+  isMenuOpen: boolean = false;
+  subOptions: any[] = [];
   constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
@@ -21,5 +23,11 @@ export class MenuWidgetComponent implements OnInit {
 
   public onClick(): void {
     this.text == 'hola' ? (this.text = 'adios') : (this.text = 'hola');
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+  changeContent(items: any[]) {
+    this.subOptions = items;
   }
 }
