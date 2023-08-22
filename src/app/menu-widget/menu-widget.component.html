@@ -1,22 +1,36 @@
 <section class="menu-container">
-  <p class="title">{{ this.data?.title }}</p>
+  <div></div>
+  <!-- <p class="title">{{ this.data?.title }}</p> -->
   <ng-container *ngFor="let item of this.data?.options">
-    <div class="menu-trigger" (click)="toggleMenu()">{{ item.name }}</div>
-    <div class="dropdown" *ngIf="isMenuOpen">
+    <div class="menu-trigger" (click)="toggleMenu(item)">
+      {{ item.name }}
+    </div>
+    <div class="dropdown">
       <ul class="menu-list">
         <li
-          *ngFor="let subItem of item.data"
+          *ngFor="let subItem of subOptions"
           (click)="changeContent(subItem.options)"
         >
           {{ subItem.title }}
         </li>
       </ul>
       <div class="content">
+        <div class="content__left">
+          <picture>
+            <source />
+            <img [src]="item.logo" alt="" />
+          </picture>
+          <p>{{ item.description }}</p>
+          <a (click)="check(item)">Visitar sitio web > {{ item.link }}</a>
+        </div>
         <div class="grid-container">
-          <ng-container *ngFor="let options of subOptions">
+          <ng-container *ngFor="let options of insideOptions">
             <div class="grid-item">
               <h2>{{ options.title }}</h2>
               <p>{{ options.description }}</p>
+              <div *ngFor="let links of options.links">
+                <a>{{ links.name }}</a>
+              </div>
             </div>
           </ng-container>
         </div>
