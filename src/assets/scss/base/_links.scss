@@ -1,0 +1,22 @@
+a {
+    display: block;
+    cursor: pointer;
+    &.link {
+        align-items: center;
+        color: color(grayscale, white);
+        display: flex;
+        font: 600 1.4rem / 1 $font-secondary;    
+        gap: 0 1rem;
+        text-decoration: underline;
+        &:after {
+            background: url(/images/icons/ext-link.svg) 0 0 no-repeat;
+            background-size: contain;
+            content: '';
+            height: 1.4rem;
+            width: 1.4rem;
+        }
+        @include mq-min(lg) {
+            font: 600 1.4rem / 2.4rem $font-secondary;
+        }
+    }
+}

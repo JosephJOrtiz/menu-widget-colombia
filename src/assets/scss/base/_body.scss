@@ -1,0 +1,25 @@
+
+*, 
+*:before, *:after {
+	box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+body {
+  font-family: $font-primary;
+  overflow: hidden;
+  margin:0;
+  -webkit-text-size-adjust: 100%;  
+  -webkit-font-smoothing: antialiased;
+}
+
+.text-hidden {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  width: 0
+}

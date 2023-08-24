@@ -1,0 +1,110 @@
+button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    color: color(grayscale, white);
+    padding: 0;    
+    text-align: left;
+    outline: none;
+    &:hover {
+        cursor: pointer;
+        .block-cards__title {
+            color: color(base, procolombia);
+        }
+    }
+    &.exportations {
+        .block-cards__title-decorator { background: color(base, exportations); }
+        &:hover .block-cards__title {
+            color: color(base, exportations);
+        }
+    }
+    &.investments {
+        .block-cards__title-decorator { background: color(base, investments); }
+        &:hover .block-cards__title {
+            color: color(base, investments);
+        }
+    }
+    &.tourism {
+        .block-cards__title-decorator { background: color(base, tourism); }
+        &:hover .block-cards__title{
+            color: color(base, tourism);
+        }
+    }
+    &.knowcolombia {
+        .block-cards__title-decorator { background: color(base, knowcolombia); }
+        &:hover .block-cards__title{
+            color: color(base, knowcolombia);
+        }
+    }
+    &.country {
+        .block-cards__title-decorator { background: color(base, country); }
+        &:hover .block-cards__title{
+            color: color(base, country);
+        }
+    }
+    &.btn-accordeon {
+        background: color(complementary, primary);
+        color: color(grayscale, white);
+        font: 700 1.7rem / 1 $font-primary;
+        letter-spacing: .1rem;
+        margin: 0 0 2.2rem;
+        padding: 1rem 4rem 1rem .7rem;
+        position: relative;
+        width: max-content;
+        &.color-red {
+            background: color(complementary, secondary);
+            &:hover { color: color(grayscale, white);}
+        }
+        &::before, &:after {
+            background: color(grayscale, white);
+            content: '';
+            height: .2rem;
+            display: block;
+            position: absolute;
+            right: 1.5rem;
+            top: 49%;
+            transform: translatey(-50%);
+            width: 1.5rem;
+            transition: all .6s ease;
+        }
+        &::after {
+            top: 46%;
+            transform: rotate(90deg);
+        }
+        &.open {
+            margin-bottom: 0;
+            &::after {
+                top: 49%;
+                transform: rotate(0);
+                transition: all .6s ease;
+            }
+            + .accordeon_content {
+                max-height: 150rem;
+                overflow: visible;
+                transform: scaleY(1);
+                transform-origin: top;
+                transition: all 0.3s ease-in-out;
+                visibility: visible;
+            }
+        }
+        @include mq-min(lg) {
+            font: 700 1.6rem / 1 $font-primary;
+            letter-spacing: .2rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem 7rem 1.5rem 1.3rem;
+            &::before, &::after {
+                right: 2rem;
+                width: 1.8rem;
+            }
+        }
+        @include mq-min(xl) {
+            font: 700 2.5rem / 1 $font-primary;
+            padding: 1.5rem 7rem 1.5rem 1.3rem;
+            &::before, &::after {
+                right: 2.2rem;
+                width: 2.3rem;
+            }
+        }
+    }
+}

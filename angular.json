@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "menu-colombia"
+  "defaultProject": "menu-colombia",
+  "cli": {
+    "analytics": "27540796-7ac9-4182-b7a8-07e10db64300"
+  }
 }

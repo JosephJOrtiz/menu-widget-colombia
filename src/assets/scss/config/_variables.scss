@@ -1,0 +1,69 @@
+// ==========================================================================
+// FontStack
+// ==========================================================================
+
+$font-size           : 1rem;
+$font-primary        : 'Futura Md BT', serif; // Furtura
+$font-primary2       : 'Futura', serif; // Furtura
+$font-secondary      : 'Raleway', serif; // Inner 
+
+// ==========================================================================
+// COLORS : Eje.: background: color( primary, light );
+// ==========================================================================
+
+$colors: (
+   base: (
+      procolombia   : #B1B1B0,
+      exportations  : #E3003A,
+      investments   : #008FD6,
+      tourism       : #FFCB00,
+      knowcolombia  : #FFC30C, 
+      country       : #9A166F
+   ),   
+   complementary: (
+      primary   : #0064B0,
+      secondary : #C91729
+   ),
+   grayscale: (
+      white    : #ffffff,
+      gray-1   : #E7E7E7,
+      black    : #000000 
+   )
+);
+
+// ==========================================================================
+// SPACING : Eje.: padding: map-get($sizes, "tiny");
+// ==========================================================================
+
+$sizes: (
+   tiny   : .75rem,   // 12px
+   small  : .875rem,  // 14px h6
+   base   : 1rem,     // 16px h5
+   thumb  : 1.25rem,  // 20px h4
+   half   : 1.375rem, // 22px h3
+   medium : 1.875rem, // 30px h2
+   large  : 3rem,     // 48px h1
+   xlarge : 3.5rem,   // 56px 
+   huge   : 4rem      // 64px 
+);
+
+// ==========================================================================
+// Breakpoints
+// ==========================================================================
+
+$breakpoints: (
+   xxs : 325px,
+   xs  : 480px,
+   sm  : 620px,
+   md  : 960px,
+   xmd : 1160px,
+   lg  : 1280px,
+   xlg : 1440px,
+   xl  : 1536px,
+);
+
+// ==========================================================================
+// Alignment
+// ==========================================================================
+
+$alignment: left, center, right, justify;

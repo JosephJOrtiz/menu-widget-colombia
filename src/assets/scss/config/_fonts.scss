@@ -1,0 +1,136 @@
+// ==========================================================================
+// Importación de la typografia desde URL externa
+// ==========================================================================
+
+// font-family: 'Rosarivo', serif;
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300, 400, 700;
+    src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+// ==========================================================================
+// Importación de typografias
+// ==========================================================================
+
+@font-face {
+    font-family: 'Futura BdCn BT';
+    src: url('FuturaBT-BoldCondensed.woff2') format('woff2'),
+        url('FuturaBT-BoldCondensed.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura-Bold.woff2') format('woff2'),
+        url('/fonts/Futura-Bold.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura MdCn BT';
+    src: url('/fonts/FuturaBT-MediumCondensed.woff2') format('woff2'),
+        url('/fonts/FuturaBT-MediumCondensed.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura XBlk BT';
+    src: url('/fonts/FuturaBT-ExtraBlack.woff2') format('woff2'),
+        url('/fonts/FuturaBT-ExtraBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Futura Lt BT';
+    src: url('/fonts/FuturaBT-Light.woff2') format('woff2'),
+        url('/fonts/FuturaBT-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura XBlk BT';
+    src: url('/fonts/FuturaBT-ExtraBlack.woff2') format('woff2'),
+        url('/fonts/FuturaBT-ExtraBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Hv BT';
+    src: url('/fonts/FuturaBT-Heavy.woff2') format('woff2'),
+        url('/fonts/FuturaBT-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura LtCn BT';
+    src: url('/fonts/FuturaBT-LightCondensed.woff2') format('woff2'),
+        url('/fonts/FuturaBT-LightCondensed.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Bk BT';
+    src: url('/fonts/FuturaBT-Book.woff2') format('woff2'),
+        url('/fonts/FuturaBT-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Md BT';
+    src: url('/fonts/FuturaBT-Medium.woff2') format('woff2'),
+        url('/fonts/FuturaBT-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura-CondensedLight.woff2') format('woff2'),
+        url('/fonts/Futura-CondensedLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura-Bold.woff2') format('woff2'),
+        url('/fonts/Futura-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura-Black-Bold.woff2') format('woff2'),
+        url('/fonts/Futura-Black-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
