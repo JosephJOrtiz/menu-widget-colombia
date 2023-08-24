@@ -6,9 +6,11 @@ import { MenuWidgetComponent } from './menu-widget/menu-widget.component';
 import { createCustomElement } from '@angular/elements';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [AppComponent, MenuWidgetComponent],
-  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
   bootstrap: [AppComponent],
 })

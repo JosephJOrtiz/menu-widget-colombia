@@ -16,10 +16,10 @@
 // Importación de typografias
 // ==========================================================================
 
-/*@font-face {
+@font-face {
     font-family: 'Futura BdCn BT';
-    src: url('FuturaBT-BoldCondensed.woff2') format('woff2'),
-        url('FuturaBT-BoldCondensed.woff') format('woff');
+    src: url('/FuturaBT-BoldCondensed.woff2') format('woff2'),
+        url('/FuturaBT-BoldCondensed.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -132,5 +132,5 @@
     font-weight: bold;
     font-style: normal;
     font-display: swap;
-}*/
+}
 

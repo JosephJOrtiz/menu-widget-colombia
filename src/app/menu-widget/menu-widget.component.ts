@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuService } from '../services/get-menu.service';
 import { SetmenuDTOService } from '../services/setmenu-dto.service';
+
 import {
   MenuInsideOptions,
   MenuOptions,
@@ -12,7 +13,7 @@ import {
   selector: 'app-menu-widget',
   templateUrl: './menu-widget.component.html',
   styleUrls: ['./menu-widget.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom, 
 })
 export class MenuWidgetComponent implements OnInit {
   @Input() color: string = '';
