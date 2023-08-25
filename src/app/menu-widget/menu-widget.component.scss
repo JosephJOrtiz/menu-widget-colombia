@@ -179,7 +179,9 @@
     }
   }
   &__children{
+    height: 100vh;
     left: 0;
+    overflow: auto;
     position: absolute;    
     //transform: translateX(100%);
     top:-28px;
@@ -189,7 +191,79 @@
       transform: translateX(100%);
     }
     &-information{
+      padding: 2rem;
       position: relative;
+    }
+    &-back{
+      align-items: center;
+      display: flex;
+      font-family: $font-secondary;
+      font-size: 1.4rem;
+      font-weight: map-get($weights, semi_bold);  
+      justify-content: center; 
+      margin-bottom:.7rem;
+      mat-icon{
+        font-size: 2rem;
+      }  
+      p{
+        margin-left: .4rem;
+      }
+    }
+    &-title{     
+      font-size: 2.4rem;
+      font-weight: map-get($weights, bold);      
+      &.headerMenu__children-categories-meetcolombia{
+        color: color(base,meetcolombia);    
+      }    
+      &.headerMenu__children-categories-secondexportations{
+        color: color(base,secondexportations);
+      }
+      &.headerMenu__children-categories-investments{
+        color: color(base,investments);
+      }
+      &.headerMenu__children-categories-tourism{
+        color: color(base,tourism);
+      }
+      &.headerMenu__children-categories-country{
+        color: color(base,country);
+      }
+      &.headerMenu__children-categories-visitcolombia{
+        color: color(base,visitcolombia);
+      }
+    }
+    &-content{
+      border-bottom: 1px solid white;
+      font-family: $font-secondary;
+      padding:3rem 0 .6rem;
+    }
+    &-subtitle{
+      font-size: 1.6rem;
+      font-weight: map-get($weights, bold); 
+      margin-bottom: .6rem;
+    }
+    &-description{
+      font-size: 1.4rem;
+      font-weight: map-get($weights, regular); 
+      line-height: 1.8rem;
+      margin-bottom:1.8rem;
+    }
+    &-link{
+      color: color(grayscale,white);
+      display: flex;
+      font-size: 1.6rem;
+      font-weight: map-get($weights, semi_bold); 
+      justify-content: space-between;
+      line-height: 1.8rem;
+      margin-bottom: 2.4rem;
+      text-decoration: none;     
+      p{
+        text-decoration: underline;
+      }
+      mat-icon{
+        font-size: 2rem;
+        height: 2rem;
+        width: 2rem;
+      }
     }
   }
 }
@@ -200,6 +274,10 @@
   right:0;
   top:0;   
   width: 100%;  
+  img{
+    height: auto;
+    width: 100%;
+  }
 }
 
 /*.dropdown {
