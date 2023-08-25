@@ -163,7 +163,7 @@
       }
     }
   }
-  &__left{
+  &__bottom{
     font-family: $font-secondary;
     font-size: 1.6rem;   
     margin-bottom: 9rem;
@@ -338,7 +338,7 @@
   }
 }*/
 @media (max-width: 360px) {
-  .headerMenu{
+  .headerMenu{  
     button{
       font-size: 1.2rem;
     }
@@ -350,11 +350,84 @@
     display: none;
   }
   .headerMenu{
+    padding: 1.3rem 3.2rem;
+    &::after{
+      display: none;
+    }
+    &__buttons{
+      position: relative;
+      width: 420px;
+      &::after{
+        content: '';
+        background: color(grayscale, white);  
+        display: block;
+        height: 100%;
+        left:50%;
+        position: absolute;
+        top:50%;
+        transform: translate(-50%, -50%);
+        width: 1px;
+      }
+      button{
+        font-size: 1.5rem;        
+        &.active{
+          font-weight: map-get($weights, bold);
+        }  
+      }
+    }
     &__top{
       width: 100%;
     }
     &__content{
+      
+    }
+    &__subMenu{     
+      margin: 4.9rem 0 0;
+    }
+    &__categories{ 
       display: flex;
+      padding: 0 3rem;
+      &.headerMenu__bk-business{
+        background: color(complementary, primary);  
+      }
+       &.headerMenu__bk-colombia{
+        background: color(base, secondexportations);  
+      }
+      &-identificator{
+        display: none;       
+      }
+      &-description{
+        display: none;
+      }
+      li{
+        padding: 1.2rem;
+        &:hover, &.activeCategory{  
+          &.headerMenu__categories-meetcolombiaDesktop{
+            background: color(base,meetcolombia);           
+          }
+          &.headerMenu__categories-secondexportationsDesktop{
+            background: color(base,secondexportations);
+          }
+          &.headerMenu__categories-investmentsDesktop{
+            background: color(base,investments);
+          }
+          &.headerMenu__categories-tourismDesktop{
+            background: color(base,tourism);
+          }
+          &.headerMenu__categories-countryDesktop{
+            background: color(base,country);
+          }
+          &.headerMenu__categories-visitcolombiaDesktop{
+            background: color(base,visitcolombia);
+          }
+        }
+      }
+    }
+    &__bottom{
+      display: none;
+    }
+    &__children{
+      
     }
   }
 }
