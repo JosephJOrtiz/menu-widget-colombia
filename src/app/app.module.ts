@@ -1,26 +1,20 @@
-import { DoBootstrap, NgModule, ApplicationRef, Injector } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MenuWidgetComponent } from './menu-widget/menu-widget.component';
-import { createCustomElement } from '@angular/elements';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
 @NgModule({
   declarations: [AppComponent, MenuWidgetComponent],
-  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule, MatIconModule],
+  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule, MatIconModule, MatExpansionModule, MatButtonModule, MatSidenavModule],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-// export class AppModule implements DoBootstrap {
-//   constructor(private injector: Injector) {}
-//   ngDoBootstrap(appRef: ApplicationRef) {
-//     const menuWidget = createCustomElement(MenuWidgetComponent, {
-//       injector: this.injector,
-//     });
-//     customElements.define('menu-widget', menuWidget);
-//   }
-// }
+

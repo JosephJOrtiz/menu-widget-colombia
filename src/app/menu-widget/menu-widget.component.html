@@ -1,9 +1,7 @@
-<section class="menu-container">
-  <!-- <p class="title">{{ this.data?.title }}</p> -->
+<!--<section class="menu-container"> 
   <ng-container *ngFor="let item of this.data?.options">
     <div class="menu-trigger" (click)="toggleMenu(item)">
-      {{ item.name }}      
-      <!--<mat-icon>expand_more</mat-icon>-->
+      {{ item.name }} 
     </div>
     <div class="dropdown">
       <ul class="menu-list">
@@ -37,9 +35,177 @@
       </div>
     </div>
   </ng-container>
-</section>
+</section>-->
 
-
+<div class="headerMenu">  
+  <div class="headerMenu__buttons">
+    <button (click)="togglePanel1()"> Hagamos Negocios
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <button (click)="togglePanel2()"> Conozca Colombia
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>  
+  <mat-accordion class="headerMenu__top">
+    <mat-expansion-panel 
+      [expanded]="panelOpenState1"
+      class="headerMenu__button">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Hagamos Negocios
+        </mat-panel-title>        
+      </mat-expansion-panel-header>
+      <div class="headerMenu__subMenu">
+        <!-- Change Background -->
+        <div class="background">
+          <picture>              
+              <img src="assets/images/backgrounds/bk-business.png" alt="" />
+          </picture>
+        </div>
+        <div  class="headerMenu__content">
+          <ul class="headerMenu__categories">
+            <li (click)="toggleOpen()"> 
+              <div class="headerMenu__categories-information">
+                <div class="headerMenu__categories-title headerMenu__categories-meetcolombia"><span class="headerMenu__categories-identificator"></span>Conoce Colombia</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>
+              <mat-icon>chevron_right</mat-icon>
+              <div class="headerMenu__children" #item>
+                  <!-- Change Background -->
+                  <div class="background">
+                    <picture>              
+                        <img src="assets/images/backgrounds/bk-colombia.png" alt="" />
+                    </picture>
+                  </div>
+                  <div class="headerMenu__children-information">
+                    <button class="headerMenu__children-back">Volver</button>
+                    <div class="headerMenu__children-title">
+                      Conoce Colombia
+                    </div>
+                    <div class="headerMenu__children-content">
+                      <div class="headerMenu__children-subtitle">Noticias publiaciones y memorias</div>
+                      <div class="headerMenu__children-description">Conozca las noticias, publicaciones y memorias de seminarios organizados por ProColombia</div>
+                      <a href="" class="headerMenu__children-link">Sala de presa (Noticias)
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Publicaciones
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Memorias de Seminarios
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                    </div>
+                    <div class="headerMenu__children-content">
+                      <div class="headerMenu__children-subtitle">Macrorruedas ProColombia (Puede llamarse actividades de promoción)</div>
+                      <div class="headerMenu__children-description">Participe en nuestras ruedas de negocios y Macrorruedas empezando por el cronograma de actividades de promoción.</div>
+                      <a href="" class="headerMenu__children-link">Macrorruedas
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                    </div>
+                    <div class="headerMenu__children-content">
+                      <div class="headerMenu__children-subtitle">Nosotros</div>
+                      <div class="headerMenu__children-description">Encuentre los servicios que tenemos a su disposición, como encontrarnos y nuestra apuesta por la sostenibilidad</div>
+                      <a href="" class="headerMenu__children-link">PROCOLOMBIA
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Transparencia
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Red de oficinas
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Cómo está organizado ProColombia
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                      <a href="" class="headerMenu__children-link">Responsabilidad social empresaria
+                        <mat-icon>open_in_new</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+              </div>
+            </li>
+            <li>    
+              <div class="headerMenu__categories-information">     
+                <div class="headerMenu__categories-title headerMenu__categories-secondexportations"> <span class="headerMenu__categories-identificator"></span>Exportaciones</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>  
+              <mat-icon>chevron_right</mat-icon>
+            </li>
+            <li>         
+              <div class="headerMenu__categories-information">   
+                <div class="headerMenu__categories-title headerMenu__categories-investments"><span class="headerMenu__categories-identificator"></span>Inversión</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>  
+              <mat-icon>chevron_right</mat-icon>
+            </li>
+            <li>
+              <div class="headerMenu__categories-information">   
+                <div class="headerMenu__categories-title headerMenu__categories-tourism"><span class="headerMenu__categories-identificator"></span>Empresarios de turismo</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>  
+              <mat-icon>chevron_right</mat-icon>
+            </li>
+          </ul>
+          <div class="headerMenu__left">
+            <picture>
+              <source srcset="assets/images/logos/color-procolombia.svg" media="(min-width: 600px)" />
+              <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
+            </picture>    
+            <div class="headerMenu__left-description">
+              <p>Entidad encargada de promover el turismo, la inversión y las exportaciones de Colombia en el ámbito internacional.</p>
+            </div>      
+            <a class="headerMenu__left-link">Visitar sitio web ></a>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel 
+      [expanded]="panelOpenState2"
+      class="headerMenu__button">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Conozca Colombia
+        </mat-panel-title>        
+      </mat-expansion-panel-header>
+      <div class="headerMenu__subMenu">
+        <!-- Change Background -->
+        <div class="background">
+          <picture>              
+              <img src="assets/images/backgrounds/bk-business.png" alt="" />
+          </picture>
+        </div>
+        <div  class="headerMenu__content">
+          <ul class="headerMenu__categories">
+            <li> 
+              <div class="headerMenu__categories-information">   
+                <div class="headerMenu__categories-title headerMenu__categories-country"><span class="headerMenu__categories-identificator"></span>Marca País</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>
+              <mat-icon>chevron_right</mat-icon>
+            </li>
+            <li>       
+              <div class="headerMenu__categories-information">       
+                <div class="headerMenu__categories-title headerMenu__categories-visitcolombia"> <span class="headerMenu__categories-identificator"></span>Visite Colombia</div>
+                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+              </div>
+              <mat-icon>chevron_right</mat-icon>
+            </li>
+          </ul>
+          <div class="headerMenu__left">
+            <picture>
+              <source srcset="assets/images/logos/color-procolombia.svg" media="(min-width: 600px)" />
+              <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
+            </picture>    
+            <div class="headerMenu__left-description">
+              <p>Entidad encargada de promover el turismo en el ámbito internacional.</p>
+            </div>      
+            <a class="headerMenu__left-link">Visitar sitio web ></a>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
     
 
      

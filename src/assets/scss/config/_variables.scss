@@ -2,10 +2,12 @@
 // FontStack
 // ==========================================================================
 
-$font-size           : 1rem;
+$font-size           : 1.6rem;
 $font-primary        : 'Futura Md BT', serif; // Furtura
 $font-primary2       : 'Futura', serif; // Furtura
 $font-secondary      : 'Raleway', serif; // Inner 
+$font-tertiary       : 'Inter', sans-serif;//Inter
+$font-icon           : 'iconFont';
 
 // ==========================================================================
 // COLORS : Eje.: background: color( primary, light );
@@ -18,7 +20,10 @@ $colors: (
       investments   : #008FD6,
       tourism       : #FFCB00,
       knowcolombia  : #FFC30C, 
-      country       : #9A166F
+      country       : #9A166F,
+      meetcolombia  : #5F6369,
+      secondexportations: #DA0A32,  
+      visitcolombia :#FBB900,  
    ),   
    complementary: (
       primary   : #0064B0,
@@ -48,13 +53,36 @@ $sizes: (
    huge   : 4rem      // 64px 
 );
 
+$lineheight: (
+   lh-minimun  : 1.3rem,     // 13px
+   lh-tiny     : 1.4rem,     // 14px
+   lh-small    : 1.8rem,     // 18px
+   lh-base     : 2.2rem,     // 22px
+   lh-regular  : 2.4rem,     // 24px
+   lh-thumb    : 2.8rem,     // 28px
+   lh-half     : 3.2rem,     // 32px
+   lh-medium   : 3.6rem,     // 36px
+   lh-large    : 4rem,       // 40px
+   lh-huge     : 5.6rem,     // 56px-
+   lh-giant    : 6.4rem      // 64px
+);
+
+$weights: (
+   light      :  200,
+   regular    :  400,
+   medium     :  500,
+   semi_bold  :  600,
+   bold       :  700,
+   extra_bold :  800
+);
+
 // ==========================================================================
 // Breakpoints
 // ==========================================================================
 
 $breakpoints: (
    xxs : 325px,
-   xs  : 480px,
+   xs  : px,
    sm  : 620px,
    md  : 960px,
    xmd : 1160px,

@@ -18,7 +18,7 @@ export class SetmenuDTOService {
       title: item.title,
       color: item.color,
       type: item.type,
-      logo: item.logo,
+      logo: item.logo,      
       options: this.setOptionsDTO(item.options),
     };
     return menu;
@@ -32,6 +32,7 @@ export class SetmenuDTOService {
         logo: element.logo,
         description: element.description,
         link: element.link,
+        isOpen: false,
         data: this.setSubOptionsDTO(element.data),
       } as MenuOptions;
     });

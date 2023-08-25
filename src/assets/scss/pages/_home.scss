@@ -51,20 +51,6 @@
     }
 }
 
-.block-welcome {   
-    margin: 20rem 0 2.5rem;
-    font: 400 1.5rem/2rem $font-primary;
-    letter-spacing: .2rem;
-    position: inherit;
-    z-index: 2;
-    span { 
-        font: 500 2.4rem/103.6% $font-primary2;
-        display: block;
-        letter-spacing: .2rem;
-        margin-top: .4rem;
-    }
-}
-
 .accordeons {
     position: inherit;
     z-index: 2;
@@ -78,52 +64,8 @@
     }
 }
 
-.background {
-    background: center left no-repeat;
-    background-size: cover;
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    transition: opacity .3s;
-    width: 100%;
-    img {
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-    }
-    &.open, &.visible { opacity: 1;  transition: opacity .3s; }
-}
 
-.language {
-    position: absolute;
-    z-index: 20;
-    right: 2rem;
-    top: 1rem;
-    ul {
-        display: flex;
-        gap: 1rem;
-        li {
-            a { font-size: 1.2rem; }
-            &:first-child {
-                align-items: center;
-                display: flex;
-                gap: 1rem;
-                &:after {
-                    background: color(grayscale, white);
-                    content: '';
-                    display: block;
-                    height: 60%;
-                    width: .3rem;
-                }
-            }
-            &:hover { opacity: .8; }
-        }
-    }
-}
+
 
 .block-cards {
     display: flex;

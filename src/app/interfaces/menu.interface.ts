@@ -11,6 +11,7 @@ export interface MenuOptions {
   logo: string;
   description: string;
   link: string;
+  isOpen: boolean;
   data: MenuSubOptions[];
 }
 
