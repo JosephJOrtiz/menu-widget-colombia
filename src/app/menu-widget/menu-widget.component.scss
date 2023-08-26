@@ -190,6 +190,9 @@
     &.myclass{
       transform: translateX(100%);
     }
+    .close{
+      display: none;
+    }
     &-information{
       padding: 2rem;
       position: relative;
@@ -264,7 +267,10 @@
         height: 2rem;
         width: 2rem;
       }
-    }
+    }  
+  }
+  &__childrenLeft{
+    display: none;
   }
 }
 
@@ -377,10 +383,7 @@
     }
     &__top{
       width: 100%;
-    }
-    &__content{
-      
-    }
+    }   
     &__subMenu{     
       margin: 4.9rem 0 0;
     }
@@ -390,8 +393,11 @@
       &.headerMenu__bk-business{
         background: color(complementary, primary);  
       }
-       &.headerMenu__bk-colombia{
+      &.headerMenu__bk-colombia{
         background: color(base, secondexportations);  
+      }
+      &-title{
+        margin-bottom: 0;   
       }
       &-identificator{
         display: none;       
@@ -400,25 +406,25 @@
         display: none;
       }
       li{
-        padding: 1.2rem;
+        padding: 1.3rem 1.2rem;
         &:hover, &.activeCategory{  
           &.headerMenu__categories-meetcolombiaDesktop{
-            background: color(base,meetcolombia);           
+            background: color(base,meetcolombia);                       
           }
           &.headerMenu__categories-secondexportationsDesktop{
-            background: color(base,secondexportations);
+            background: color(base,secondexportations);              
           }
           &.headerMenu__categories-investmentsDesktop{
-            background: color(base,investments);
+            background: color(base,investments);             
           }
           &.headerMenu__categories-tourismDesktop{
-            background: color(base,tourism);
+            background: color(base,tourism);               
           }
           &.headerMenu__categories-countryDesktop{
-            background: color(base,country);
+            background: color(base,country);              
           }
           &.headerMenu__categories-visitcolombiaDesktop{
-            background: color(base,visitcolombia);
+            background: color(base,visitcolombia);              
           }
         }
       }
@@ -426,8 +432,117 @@
     &__bottom{
       display: none;
     }
+    &__childrenLeft{
+      background: color(grayscale,gray-4);      
+      display: block;
+      max-width: 375px;
+      min-width: 375px;
+      padding: 3.7rem;      
+      &.headerMenu__childrenLeft-meetcolombiaBorder{
+        border-right:5px solid color(base,meetcolombia);
+      }
+      &.headerMenu__childrenLeft-secondexportationsBorder{
+        border-right:5px solid color(base,secondexportations);
+      }
+      &.headerMenu__childrenLeft-investmentsBorder{
+        border-right:5px solid color(base,investments);
+      }
+      &.headerMenu__childrenLeft-tourismBorder{
+        border-right:5px solid color(base,tourism);
+      }
+      &.headerMenu__childrenLeft-countryBorder{
+        border-right:5px solid color(base,country);
+      }
+      &.headerMenu__childrenLeft-countryBorder{
+        border-right:5px solid color(base,country);
+      }
+      &.headerMenu__childrenLeft-visitcolombiaBorder{
+        border-right:5px solid color(base,visitcolombia);
+      }      
+      &-description{
+        font-family: $font-secondary;
+        font-size: 1.6rem;
+        font-weight: map-get($weights, regular); 
+        line-height: 2rem;
+        margin-bottom:1.4rem;
+        margin-top:1.9rem;
+      }
+      &-link{
+        color: color(base,investments);
+        display: flex;
+        font-family: $font-secondary;
+        font-size: 1.6rem;
+        font-weight: map-get($weights, semi_bold); 
+        justify-content: space-between;
+        line-height: 1.8rem;
+        margin-bottom: 2.4rem;
+        text-decoration: none; 
+      }      
+    }
     &__children{
-      
+      color: color(grayscale,gray-3);
+      display: flex;
+      height: auto;
+      left: 0rem;
+      overflow: inherit;
+      position: absolute;
+      top: 51px;
+      width: 100vw;
+      z-index: 9; 
+      &-first{
+        display: flex;
+        justify-content: space-between;
+      }
+      .close{
+        display: block;
+        color: #A0A0A0;
+      }
+      &-information{
+        order:2;
+        padding: 2rem;
+        padding: 2.5rem 3rem;
+        position: relative;
+      }
+      &-back{
+        display: none;
+      }
+      &-title{     
+        font-size: 2rem;
+        font-weight: map-get($weights, bold);  
+      }
+      &-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);       
+        gap: 0 35px;
+      }
+      &-content{
+        padding: 2rem 0 0.6rem;
+      }
+      &-subtitle{
+       font-family: $font-secondary;
+       margin-bottom: .9rem;
+      }
+      &-description{
+        font-family: $font-secondary;      
+        margin-bottom:1.8rem;
+      }
+      &-link{
+        color: color(base, investments);       
+        font-family: $font-secondary;      
+        font-size: 1.4rem;
+        font-weight: map-get($weights, semi_bold); 
+        justify-content: start;
+        margin-bottom: 1.3rem;
+        p{
+          margin-right: .5rem;
+        }
+        mat-icon{
+          font-size: 1.5rem;
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }  
     }
   }
 }
+
