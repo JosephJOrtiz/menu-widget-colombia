@@ -25,7 +25,9 @@ export class MenuWidgetComponent implements OnInit {
   insideOptions: MenuInsideOptions[] = []; 
   panelOpenState1: boolean = false;
   panelOpenState2: boolean = false;
- 
+  isOpenChildrenMenu: boolean =false;
+  isOpenChildrenMenu2: boolean =false;
+  isOpenChildrenMenu3: boolean =false;
   constructor(
     private menuService: MenuService,
     private setDTO: SetmenuDTOService,
@@ -62,8 +64,26 @@ export class MenuWidgetComponent implements OnInit {
   togglePanel2() {
     this.panelOpenState2 = !this.panelOpenState2   
   }
-  toggleOpen() {//item: MenuOptions
-    this.data.options.forEach(item=>item.isOpen=false);
-    //item.isOpen!=item.isOpen
+  toggleOpen() {
+    this.isOpenChildrenMenu = !this.isOpenChildrenMenu 
+    this.isOpenChildrenMenu2 = false;
+    this.isOpenChildrenMenu3 = false;
+  } 
+  toggleOpen2() {
+    this.isOpenChildrenMenu2 = !this.isOpenChildrenMenu2 
+    this.isOpenChildrenMenu = false;
+    this.isOpenChildrenMenu3 = false;
+  } 
+  toggleOpen3() {
+    this.isOpenChildrenMenu3 = !this.isOpenChildrenMenu3
+    this.isOpenChildrenMenu2 = false;
+    this.isOpenChildrenMenu = false;
+  } 
+  closeAll(){
+    this.isOpenChildrenMenu = false;
+    this.isOpenChildrenMenu2 = false;
+    this.isOpenChildrenMenu3 = false;
+    this.panelOpenState1= false;
+    this.panelOpenState2= false;
   }
 }

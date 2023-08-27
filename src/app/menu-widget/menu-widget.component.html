@@ -36,15 +36,18 @@
     </div>
   </ng-container>
 </section>-->
-
+<!--MAQUETACIÓN-->
+<!--Tener en cuenta que el menu oscuro solo cambia en mobile a azul o rojo de acuerdo a la opción que escoja-->
 <div class="headerMenu">  
-  <div class="headerMenu__buttons">
-    <button (click)="togglePanel1()"> Hagamos Negocios
-      <mat-icon>expand_more</mat-icon>
-    </button>
-    <button (click)="togglePanel2()"> Conozca Colombia
-      <mat-icon>expand_more</mat-icon>
-    </button>
+  <div class="headerMenu__boxButtons">
+    <div class="headerMenu__buttons">
+      <button (click)="togglePanel1()"> Hagamos Negocios
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <button (click)="togglePanel2()"> Conozca Colombia
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </div>
   </div>  
   <mat-accordion class="headerMenu__top">
     <mat-expansion-panel 
@@ -63,29 +66,37 @@
           </picture>
         </div>
         <div  class="headerMenu__content">
-          <ul class="headerMenu__categories headerMenu__bk-business">
-            <li (click)="toggleOpen()" class="activeCategory headerMenu__categories-meetcolombiaDesktop"> 
+          <ul class="headerMenu__categories headerMenu__bk-business">           
+            <li class="activeCategory headerMenu__categories-meetcolombiaDesktop" (click)="toggleOpen()"> 
               <div class="headerMenu__categories-information">
+                <!--Tener en cuenta que la barra del titulo que se encuentra dentro del <span> cambia de color de acuerdo a la categoría
+                    .headerMenu__categories-meetcolombia=#5F6369
+                    .headerMenu__categories-secondexportations=#DA0A32
+                    .headerMenu__categories-investments=#008FD6
+                    .headerMenu__categories-tourism=#FFCB00
+                    .headerMenu__categories-country=#9A166F
+                    .headerMenu__categories-visitcolombia=#FBB900
+                -->
                 <div class="headerMenu__categories-title headerMenu__categories-meetcolombia"><span class="headerMenu__categories-identificator"></span>Conoce Colombia</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
               </div>
               <mat-icon>chevron_right</mat-icon>              
             </li>
-            <li class="activeCategory headerMenu__categories-secondexportationsDesktop">    
+            <li class="activeCategory headerMenu__categories-secondexportationsDesktop" (click)="toggleOpen2()">    
               <div class="headerMenu__categories-information">     
                 <div class="headerMenu__categories-title headerMenu__categories-secondexportations"> <span class="headerMenu__categories-identificator"></span>Exportaciones</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
               </div>  
               <mat-icon>chevron_right</mat-icon>              
             </li>
-            <li class="activeCategory headerMenu__categories-investmentsDesktop">         
+            <li class="activeCategory headerMenu__categories-investmentsDesktop" (click)="toggleOpen()">         
               <div class="headerMenu__categories-information">   
                 <div class="headerMenu__categories-title headerMenu__categories-investments"><span class="headerMenu__categories-identificator"></span>Inversión</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
               </div>  
               <mat-icon>chevron_right</mat-icon>
             </li>
-            <li class="activeCategory headerMenu__categories-tourismDesktop">
+            <li class="activeCategory headerMenu__categories-tourismDesktop" (click)="toggleOpen()">
               <div class="headerMenu__categories-information">   
                 <div class="headerMenu__categories-title headerMenu__categories-tourism"><span class="headerMenu__categories-identificator"></span>Empresarios de turismo</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
@@ -93,15 +104,15 @@
               <mat-icon>chevron_right</mat-icon>
             </li>
           </ul>          
-          <div class="headerMenu__children" #item>
-            <!-- Change Background -->
+          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu}">
+           <!-- Change Background Aquí el background cambia de acuerdo a la categoría-->
             <div class="background">
                   <picture>              
                       <img src="assets/images/backgrounds/bk-colombia.png" alt="" />
                   </picture>
             </div>
             <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back">
+              <button class="headerMenu__children-back" (click)="toggleOpen()">
                 <mat-icon>west</mat-icon>
                 <p>Volver</p>
               </button>
@@ -109,7 +120,7 @@
                 <div class="headerMenu__children-title headerMenu__children-categories-meetcolombia">
                   Conoce Colombia
                 </div>
-                <mat-icon class="close">close</mat-icon>
+                <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
               </div>
               <div  class="headerMenu__children-grid">
                 <div class="headerMenu__children-content">
@@ -162,6 +173,14 @@
                 </div>              
               </div>
             </div>
+            <!--Tener en cuenta que la barra lateral del medio cambia de color de acuerdo a la categoría
+                .headerMenu__childrenLeft-meetcolombiaBorder=#5F6369
+                .headerMenu__childrenLeft-secondexportationsBorder=#DA0A32
+                .headerMenu__childrenLeft-investmentsBorder=#008FD6
+                .headerMenu__childrenLeft-tourismBorder=#FFCB00
+                .headerMenu__childrenLeft-countryBorder=#9A166F
+                .headerMenu__childrenLeft-visitcolombiaBorder=#FBB900
+            -->
             <div class="headerMenu__childrenLeft headerMenu__childrenLeft-meetcolombiaBorder">
               <picture>                  
                 <img src="assets/images/logos/color-procolombia.svg" alt="" width="254" height="46"/>
@@ -172,20 +191,23 @@
               <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
             </div>
           </div>
-          <!--<div class="headerMenu__children" #item>-->
+          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu2}">
             <!-- Change Background -->
-            <!--<div class="background">
+            <div class="background">
               <picture>              
                   <img src="assets/images/backgrounds/bk-exportations.png" alt="" />
               </picture>
             </div>
             <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back">
+              <button class="headerMenu__children-back" (click)="toggleOpen2()">
                 <mat-icon>west</mat-icon>
                 <p>Volver</p>
               </button>
-              <div class="headerMenu__children-title headerMenu__children-categories-secondexportations">
-                Exportaciones
+              <div class="headerMenu__children-first">
+                <div class="headerMenu__children-title headerMenu__children-categories-secondexportations">
+                  Exportaciones
+                </div>
+                <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
               </div>
               <div  class="headerMenu__children-grid">
                 <div class="headerMenu__children-content">
@@ -254,7 +276,7 @@
                 </div>
               </div>
             </div>
-            <div class="headerMenu__childrenLeft">
+            <div class="headerMenu__childrenLeft headerMenu__childrenLeft-secondexportationsBorder">
               <picture>                  
                 <img src="assets/images/logos/color-procolombia.svg" alt=""  width="254" height="46"/>
               </picture>    
@@ -263,7 +285,7 @@
               </div>      
               <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
             </div>
-          </div>-->
+          </div>
           <div class="headerMenu__bottom">
             <picture>              
               <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
@@ -293,14 +315,14 @@
         </div>
         <div  class="headerMenu__content">
           <ul class="headerMenu__categories headerMenu__bk-colombia">
-            <li class="activeCategory headerMenu__categories-countryDesktop"> 
+            <li class="activeCategory headerMenu__categories-countryDesktop" (click)="toggleOpen3()"> 
               <div class="headerMenu__categories-information">   
                 <div class="headerMenu__categories-title headerMenu__categories-country"><span class="headerMenu__categories-identificator"></span>Marca País</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
               </div>
               <mat-icon>chevron_right</mat-icon>
             </li>
-            <li class="activeCategory headerMenu__categories-visitcolombiaDesktop">       
+            <li class="activeCategory headerMenu__categories-visitcolombiaDesktop" (click)="toggleOpen()">       
               <div class="headerMenu__categories-information">       
                 <div class="headerMenu__categories-title headerMenu__categories-visitcolombia"> <span class="headerMenu__categories-identificator"></span>Visite Colombia</div>
                 <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
@@ -308,15 +330,15 @@
               <mat-icon>chevron_right</mat-icon>
             </li>
           </ul>
-          <!--<div class="headerMenu__children" #item>-->
+          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu3}">
             <!-- Change Background -->
-            <!--<div class="background">
-                  <picture>              
-                      <img src="assets/images/backgrounds/bk-country.png" alt="" />
-                  </picture>
+            <div class="background">
+                <picture>              
+                  <img src="assets/images/backgrounds/bk-country.png" alt="" />
+                </picture>
             </div>
             <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back">
+              <button class="headerMenu__children-back" (click)="toggleOpen3()">
                 <mat-icon>west</mat-icon>
                 <p>Volver</p>
               </button>
@@ -325,7 +347,7 @@
                   Marca País
                 </div>
                 <div>
-                  <mat-icon class="close">close</mat-icon>
+                  <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
                 </div>
               </div>
               <div  class="headerMenu__children-grid">
@@ -384,7 +406,7 @@
               </div>      
               <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
             </div>
-          </div>-->
+          </div>
           <div class="headerMenu__bottom">
             <picture>             
               <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
