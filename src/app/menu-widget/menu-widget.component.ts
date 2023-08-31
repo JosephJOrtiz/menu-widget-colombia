@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../services/get-menu.service';
 import { SetmenuDTOService } from '../services/setmenu-dto.service';
+import { environment } from 'src/environments/environment';
 
 
 import {
@@ -13,77 +14,63 @@ import {
 @Component({
   selector: 'app-menu-widget',
   templateUrl: './menu-widget.component.html',
-  styleUrls: ['./menu-widget.component.scss'], 
+  styleUrls: ['./menu-widget.component.scss'],
 })
 export class MenuWidgetComponent implements OnInit {
   @Input() color: string = '';
   public text: string = 'hola';
-  public data!: MenuWidgetInterface;
+  public data:any  = false;
   isMenuOpen: boolean = true;
   mainOptions!: MenuOptions;
   subOptions: MenuSubOptions[] = [];
   insideOptions: MenuInsideOptions[] = []; 
-  panelOpenState1: boolean = false;
-  panelOpenState2: boolean = false;
-  isOpenChildrenMenu: boolean =false;
-  isOpenChildrenMenu2: boolean =false;
-  isOpenChildrenMenu3: boolean =false;
+
+  openItemParent:null|number = null;
+  openItemSubParent:null|number = null;
+  urlSite = environment.url;
   constructor(
     private menuService: MenuService,
     private setDTO: SetmenuDTOService,
-    
   ) {}
 
   ngOnInit(): void {
     this.menuService.fetchMenuData().subscribe((response: any) => {
-      this.data = this.setDTO.setMainDTO(response.data);
+      this.data = response.data
+    },
+    error => {
+      this.data = false;
+      const bodyTag = document.body;
+      bodyTag.style.height = '0px';
     });
   }
 
-  public onClick(): void {
-    this.text == 'hola' ? (this.text = 'adios') : (this.text = 'hola');
+  toggleMenu(index: number) {
+    this.openItemSubParent = null;
+    if(this.openItemParent === index) {
+      this.openItemParent = null;
+    }
+    else {
+      this.openItemParent = index;
+    }
   }
-  toggleMenu(item: any) {
-    // this.isMenuOpen = !this.isMenuOpen;
-    this.subOptions = [];
-    this.insideOptions = [];
 
-    this.mainOptions = item;
-    this.subOptions = item.data;
-  }
-  changeContent(items: any[]) {
-    this.insideOptions = [];
-    this.insideOptions = items;
-  }
-  check(item: any) {
-    console.log(item);
-  }
-  togglePanel1() {
-      this.panelOpenState1 = !this.panelOpenState1     
-  }
-  togglePanel2() {
-    this.panelOpenState2 = !this.panelOpenState2   
+  toogleSubMenu(index: number):void {
+    if(this.openItemSubParent === index) {
+      this.openItemSubParent = null;
+    }
+    else {
+      this.openItemSubParent = index;
+    }
   }
   toggleOpen() {
-    this.isOpenChildrenMenu = !this.isOpenChildrenMenu 
-    this.isOpenChildrenMenu2 = false;
-    this.isOpenChildrenMenu3 = false;
+    this.openItemSubParent = null;
+  }
+  toggleClose() {
+    this.openItemSubParent = null;
   } 
-  toggleOpen2() {
-    this.isOpenChildrenMenu2 = !this.isOpenChildrenMenu2 
-    this.isOpenChildrenMenu = false;
-    this.isOpenChildrenMenu3 = false;
-  } 
-  toggleOpen3() {
-    this.isOpenChildrenMenu3 = !this.isOpenChildrenMenu3
-    this.isOpenChildrenMenu2 = false;
-    this.isOpenChildrenMenu = false;
-  } 
+
   closeAll(){
-    this.isOpenChildrenMenu = false;
-    this.isOpenChildrenMenu2 = false;
-    this.isOpenChildrenMenu3 = false;
-    this.panelOpenState1= false;
-    this.panelOpenState2= false;
+    this.openItemParent = null;
+    this.openItemSubParent = null;
   }
 }

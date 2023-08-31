@@ -1,418 +1,101 @@
-<!--<section class="menu-container"> 
-  <ng-container *ngFor="let item of this.data?.options">
-    <div class="menu-trigger" (click)="toggleMenu(item)">
-      {{ item.name }} 
-    </div>
-    <div class="dropdown">
-      <ul class="menu-list">
-        <li
-          *ngFor="let subItem of subOptions"
-          (click)="changeContent(subItem.options)"
-        >
-          {{ subItem.title }}
-        </li>
-      </ul>
-      <div class="content__left">
-        <picture>
-          <source />
-          <img [src]="item.logo" alt="" />
-        </picture>
-        <p>{{ item.description }}</p>
-        <a (click)="check(item)">Visitar sitio web > {{ item.link }}</a>
-      </div>
-      <div class="content">       
-        <div class="grid-container">
-          <ng-container *ngFor="let options of insideOptions">
-            <div class="grid-item">
-              <h2>{{ options.title }}</h2>
-              <p>{{ options.description }}</p>
-              <div *ngFor="let links of options.links">
-                <a>{{ links.name }}</a>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </ng-container>
-</section>-->
-<!--MAQUETACIÓN-->
-<!--Tener en cuenta que el menu oscuro solo cambia en mobile a azul o rojo de acuerdo a la opción que escoja-->
-<div class="headerMenu">  
+<div class="headerMenu" *ngIf="data">  
   <div class="headerMenu__boxButtons">
     <div class="headerMenu__buttons">
-      <button (click)="togglePanel1()"> Hagamos Negocios
-        <mat-icon>expand_more</mat-icon>
-      </button>
-      <button (click)="togglePanel2()"> Conozca Colombia
+      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)"> 
+        {{menu.attributes.title}}
         <mat-icon>expand_more</mat-icon>
       </button>
     </div>
   </div>  
   <mat-accordion class="headerMenu__top">
-    <mat-expansion-panel 
-      [expanded]="panelOpenState1"
+    <mat-expansion-panel *ngFor="let menu of data; let i = index"
+      [expanded]="openItemParent === i"
       class="headerMenu__button">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Hagamos Negocios
+          {{menu.attributes.title}}
         </mat-panel-title>        
       </mat-expansion-panel-header>
       <div class="headerMenu__subMenu">
         <!-- Change Background -->
         <div class="background">
           <picture>              
-              <img src="assets/images/backgrounds/bk-business.png" alt="" />
+              <img src="{{urlSite + menu.attributes.backgroundImage.data.attributes.url}}" alt="" />
           </picture>
         </div>
         <div  class="headerMenu__content">
-          <ul class="headerMenu__categories headerMenu__bk-business">           
-            <li class="activeCategory headerMenu__categories-meetcolombiaDesktop" (click)="toggleOpen()"> 
+          <ul 
+          class="headerMenu__categories headerMenu__bk-business"
+          [style.background-color]="menu.attributes.backgroundColor"
+          >           
+            <li 
+            *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index" 
+            class="activeCategory headerMenu__categories-meetcolombiaDesktop" 
+            (click)="toogleSubMenu(isub)"
+            [style.background-color]="subMenu.color"
+            > 
               <div class="headerMenu__categories-information">
-                <!--Tener en cuenta que la barra del titulo que se encuentra dentro del <span> cambia de color de acuerdo a la categoría
-                    .headerMenu__categories-meetcolombia=#5F6369
-                    .headerMenu__categories-secondexportations=#DA0A32
-                    .headerMenu__categories-investments=#008FD6
-                    .headerMenu__categories-tourism=#FFCB00
-                    .headerMenu__categories-country=#9A166F
-                    .headerMenu__categories-visitcolombia=#FBB900
-                -->
-                <div class="headerMenu__categories-title headerMenu__categories-meetcolombia"><span class="headerMenu__categories-identificator"></span>Conoce Colombia</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+                <div class="headerMenu__categories-title headerMenu__categories-meetcolombia">
+                  <span class="headerMenu__categories-identificator" [style.background-color]="subMenu.color"></span>
+                  {{subMenu.title}}
+                </div>
+                <p class="headerMenu__categories-description">{{subMenu.description}}</p>
               </div>
               <mat-icon>chevron_right</mat-icon>              
-            </li>
-            <li class="activeCategory headerMenu__categories-secondexportationsDesktop" (click)="toggleOpen2()">    
-              <div class="headerMenu__categories-information">     
-                <div class="headerMenu__categories-title headerMenu__categories-secondexportations"> <span class="headerMenu__categories-identificator"></span>Exportaciones</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
-              </div>  
-              <mat-icon>chevron_right</mat-icon>              
-            </li>
-            <li class="activeCategory headerMenu__categories-investmentsDesktop" (click)="toggleOpen()">         
-              <div class="headerMenu__categories-information">   
-                <div class="headerMenu__categories-title headerMenu__categories-investments"><span class="headerMenu__categories-identificator"></span>Inversión</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
-              </div>  
-              <mat-icon>chevron_right</mat-icon>
-            </li>
-            <li class="activeCategory headerMenu__categories-tourismDesktop" (click)="toggleOpen()">
-              <div class="headerMenu__categories-information">   
-                <div class="headerMenu__categories-title headerMenu__categories-tourism"><span class="headerMenu__categories-identificator"></span>Empresarios de turismo</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
-              </div>  
-              <mat-icon>chevron_right</mat-icon>
-            </li>
-          </ul>          
-          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu}">
+            </li>           
+          </ul>
+          <div 
+          *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index" 
+          class="headerMenu__children" 
+          [ngClass]="{open:openItemSubParent === isub}"
+          >
            <!-- Change Background Aquí el background cambia de acuerdo a la categoría-->
             <div class="background">
                   <picture>              
-                      <img src="assets/images/backgrounds/bk-colombia.png" alt="" />
+                      <img src="{{urlSite + subMenu.backgroundImage.data.attributes.url}}" alt="" />
                   </picture>
             </div>
             <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back" (click)="toggleOpen()">
+              <button class="headerMenu__children-back" (click)="toggleClose()">
                 <mat-icon>west</mat-icon>
                 <p>Volver</p>
               </button>
               <div class="headerMenu__children-first">
-                <div class="headerMenu__children-title headerMenu__children-categories-meetcolombia">
-                  Conoce Colombia
+                <div class="headerMenu__children-title headerMenu__children-categories-meetcolombia" [style.color]="subMenu.color">
+                  {{subMenu.title}}
                 </div>
                 <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
               </div>
               <div  class="headerMenu__children-grid">
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Noticias publiaciones y memorias</div>
-                  <div class="headerMenu__children-description">Conozca las noticias, publicaciones y memorias de seminarios organizados por ProColombia</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Sala de presa (Noticias)</p>
+                <div 
+                  class="headerMenu__children-content"
+                  *ngFor="let item of subMenu.items"
+                >
+                  <div class="headerMenu__children-subtitle">{{ item.title}}</div>
+                  <div class="headerMenu__children-description">{{ item.description}}</div>
+                  <a *ngFor="let link of item.links" href="{{link.url}}" class="headerMenu__children-link">
+                    <p>{{link.text}}</p>
                     <mat-icon>open_in_new</mat-icon>
                   </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Publicaciones</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Memorias de Seminarios</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Macrorruedas ProColombia (Puede llamarse actividades de promoción)</div>
-                  <div class="headerMenu__children-description">Participe en nuestras ruedas de negocios y Macrorruedas empezando por el cronograma de actividades de promoción.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Macrorruedas</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Nosotros</div>
-                  <div class="headerMenu__children-description">Encuentre los servicios que tenemos a su disposición, como encontrarnos y nuestra apuesta por la sostenibilidad</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>PROCOLOMBIA</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Transparencia</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Red de oficinas</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Cómo está organizado ProColombia</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Responsabilidad social empresaria</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>              
+                </div>           
               </div>
             </div>
-            <!--Tener en cuenta que la barra lateral del medio cambia de color de acuerdo a la categoría
-                .headerMenu__childrenLeft-meetcolombiaBorder=#5F6369
-                .headerMenu__childrenLeft-secondexportationsBorder=#DA0A32
-                .headerMenu__childrenLeft-investmentsBorder=#008FD6
-                .headerMenu__childrenLeft-tourismBorder=#FFCB00
-                .headerMenu__childrenLeft-countryBorder=#9A166F
-                .headerMenu__childrenLeft-visitcolombiaBorder=#FBB900
-            -->
-            <div class="headerMenu__childrenLeft headerMenu__childrenLeft-meetcolombiaBorder">
+            <div class="headerMenu__childrenLeft headerMenu__childrenLeft-meetcolombiaBorder" [style.border-right-color]="subMenu.color">
               <picture>                  
-                <img src="assets/images/logos/color-procolombia.svg" alt="" width="254" height="46"/>
+                <img src="{{urlSite + menu.attributes.logo.data.attributes.url}}" alt="" width="254" height="46"/>
               </picture>    
               <div class="headerMenu__childrenLeft-description">
-                <p>Entidad encargada de promover el turismo, la inversión y las exportaciones de Colombia en el ámbito internacional.</p>
+                {{menu.attributes.description}}
               </div>      
-              <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
-            </div>
-          </div>
-          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu2}">
-            <!-- Change Background -->
-            <div class="background">
-              <picture>              
-                  <img src="assets/images/backgrounds/bk-exportations.png" alt="" />
-              </picture>
-            </div>
-            <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back" (click)="toggleOpen2()">
-                <mat-icon>west</mat-icon>
-                <p>Volver</p>
-              </button>
-              <div class="headerMenu__children-first">
-                <div class="headerMenu__children-title headerMenu__children-categories-secondexportations">
-                  Exportaciones
-                </div>
-                <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
-              </div>
-              <div  class="headerMenu__children-grid">
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Formación para empresarios colombianos</div>
-                  <div class="headerMenu__children-description">Herramienta gratuita de capacitación para exportar desde Colombia.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Portal de Formación Exportadora</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Ruta Exportadora</div>
-                  <div class="headerMenu__children-description">Conozca el paso a paso para su proceso de internacionalización.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Ruta Exportadora</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Encuentre la oferta y proveedores para su mercado</div>
-                  <div class="headerMenu__children-description">Oferta de más de 2.800 proveedores colombianos.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>B2B marketplace</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Origen de nuestro origen</div>
-                  <div class="headerMenu__children-description">Recorridos virtuales de los lugares de producción de las empresas colombianas.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Origen de nuestro origen</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Design Room Colombia</div>
-                  <div class="headerMenu__children-description">Herramienta interactiva con la oferta colombiana en diseño de interiores.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Design room Colombia</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Health and Wellbeing Showcase</div>
-                  <div class="headerMenu__children-description">Ambientes interactivos de exhibicion de bienes y servicios de salud, bienestar y belleza.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Health and Wellbeing Showcase</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Beyond Autoparts</div>
-                  <div class="headerMenu__children-description">Herramienta interactiva con la oferta de la industria automotriz colombiana.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Beyond Autoparts</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Building Origins</div>
-                  <div class="headerMenu__children-description">Herramienta interactiva con la oferta colombiana para el sector de materiales de construcción y otros sectores complementarios.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Building Origin</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>                    
-                </div>
-              </div>
-            </div>
-            <div class="headerMenu__childrenLeft headerMenu__childrenLeft-secondexportationsBorder">
-              <picture>                  
-                <img src="assets/images/logos/color-procolombia.svg" alt=""  width="254" height="46"/>
-              </picture>    
-              <div class="headerMenu__childrenLeft-description">
-                <p>Entidad encargada de promover el turismo, la inversión y las exportaciones de Colombia en el ámbito internacional.</p>
-              </div>      
-              <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
+              <a href="{{menu.attributes.UrlSite.url}}" class="headerMenu__childrenLeft-link">{{menu.attributes.UrlSite.text}} ></a>
             </div>
           </div>
           <div class="headerMenu__bottom">
             <picture>              
-              <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
+              <img src="{{urlSite + menu.attributes.logoFooter.data.attributes.url}}" alt="" width="228" height="37"/>
             </picture>    
             <div class="headerMenu__bottom-description">
-              <p>Entidad encargada de promover el turismo, la inversión y las exportaciones de Colombia en el ámbito internacional.</p>
-            </div>      
-            <a class="headerMenu__bottom-link">Visitar sitio web ></a>
-          </div>
-        </div>
-      </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel 
-      [expanded]="panelOpenState2"
-      class="headerMenu__button">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Conozca Colombia
-        </mat-panel-title>        
-      </mat-expansion-panel-header>
-      <div class="headerMenu__subMenu">
-        <!-- Change Background -->
-        <div class="background">
-          <picture>              
-              <img src="assets/images/backgrounds/bk-business.png" alt="" />
-          </picture>
-        </div>
-        <div  class="headerMenu__content">
-          <ul class="headerMenu__categories headerMenu__bk-colombia">
-            <li class="activeCategory headerMenu__categories-countryDesktop" (click)="toggleOpen3()"> 
-              <div class="headerMenu__categories-information">   
-                <div class="headerMenu__categories-title headerMenu__categories-country"><span class="headerMenu__categories-identificator"></span>Marca País</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
-              </div>
-              <mat-icon>chevron_right</mat-icon>
-            </li>
-            <li class="activeCategory headerMenu__categories-visitcolombiaDesktop" (click)="toggleOpen()">       
-              <div class="headerMenu__categories-information">       
-                <div class="headerMenu__categories-title headerMenu__categories-visitcolombia"> <span class="headerMenu__categories-identificator"></span>Visite Colombia</div>
-                <p class="headerMenu__categories-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
-              </div>
-              <mat-icon>chevron_right</mat-icon>
-            </li>
-          </ul>
-          <div class="headerMenu__children" [ngClass]="{open:isOpenChildrenMenu3}">
-            <!-- Change Background -->
-            <div class="background">
-                <picture>              
-                  <img src="assets/images/backgrounds/bk-country.png" alt="" />
-                </picture>
-            </div>
-            <div class="headerMenu__children-information">
-              <button class="headerMenu__children-back" (click)="toggleOpen3()">
-                <mat-icon>west</mat-icon>
-                <p>Volver</p>
-              </button>
-              <div class="headerMenu__children-first">
-                <div class="headerMenu__children-title headerMenu__children-categories-country">
-                  Marca País
-                </div>
-                <div>
-                  <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
-                </div>
-              </div>
-              <div  class="headerMenu__children-grid">
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">El País de la Belleza</div>
-                  <div class="headerMenu__children-description">Conozca el nuevo mensaje de país que busca contarle al mundo por qué Colombia es el país de la belleza.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>El País de la Belleza</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Cultura Colombiana</div>
-                  <div class="headerMenu__children-description">Conozca todo lo que hace a Colombia un país rico en cultura, gastronomía, talento y mucho más.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Cultura Colombiana</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Ferias & Fiestas</div>
-                  <div class="headerMenu__children-description">Colombia cuenta con una riqueza cultural única. Conozca aquí nuestro calendario de eventos durante todo el año.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Ferias & Fiestas</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>  
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Nuestros Embajadores</div>
-                  <div class="headerMenu__children-description">Cada día, miles de colombianos dejan el nombre de Colombia en alto, gracias a su talento y pasión por lo que hacen. Conozca más sobre nuestros embajadores.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Nuestros Embajadores</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div> 
-                <div class="headerMenu__children-content">
-                  <div class="headerMenu__children-subtitle">Nuestros Aliados</div>
-                  <div class="headerMenu__children-description">Conozca o conviértase en aliado de la Marca País Colombia y tenga la posibilidad de vincularse a la narrativa de país, creando campañas y productos en conjunto, que destaquen #LoMejorDeColombia.</div>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Aliados</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                  <a href="" class="headerMenu__children-link">
-                    <p>Sea un aliado</p>
-                    <mat-icon>open_in_new</mat-icon>
-                  </a>
-                </div>              
-              </div>
-            </div>
-            <div class="headerMenu__childrenLeft headerMenu__childrenLeft-countryBorder">
-              <picture>                  
-                <img src="assets/images/logos/color-procolombia-reverse.svg" alt="" width="254" height="46"/>
-              </picture>    
-              <div class="headerMenu__childrenLeft-description">
-                <p>Entidad encargada de promover el turismo en el ámbito internacional.</p>
-              </div>      
-              <a class="headerMenu__childrenLeft-link">Visitar sitio web ></a>
-            </div>
-          </div>
-          <div class="headerMenu__bottom">
-            <picture>             
-              <img src="assets/images/logos/procolombia.svg" alt="" width="228" height="37"/>
-            </picture>    
-            <div class="headerMenu__bottom-description">
-              <p>Entidad encargada de promover el turismo en el ámbito internacional.</p>
+              <p>{{menu.attributes.description}}</p>
             </div>      
             <a class="headerMenu__bottom-link">Visitar sitio web ></a>
           </div>
@@ -421,10 +104,6 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-    
-
-     
-
   
 
   
