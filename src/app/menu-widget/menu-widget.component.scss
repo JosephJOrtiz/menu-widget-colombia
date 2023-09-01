@@ -72,7 +72,7 @@
       }  
     }
   }
-  &__categories{
+  &__categories{    
     padding-top: 2rem;
     &-title{   
       font-size: 1.6rem;
@@ -126,7 +126,7 @@
       line-height: 1.8rem;
     }
     li{
-      align-items: center;
+      align-items: center;   
       display: flex;     
       padding: 2rem 1.4rem 2rem 6rem;
       position: relative;
@@ -398,10 +398,10 @@
       display: flex;
       padding: 0 3rem;
       &.headerMenu__bk-business{
-        background: color(complementary, primary);  
+        //background-color: color(complementary, primary) !important;  
       }
       &.headerMenu__bk-colombia{
-        background: color(base, secondexportations);  
+        //background: color(base, secondexportations);  
       }
       &-title{
         margin-bottom: 0;   
@@ -510,6 +510,7 @@
       .close{
         display: block;
         color: #A0A0A0;
+        cursor:pointer;
       }
       &-information{
         order:2;
@@ -559,4 +560,15 @@
     }
   }
 }
+@include mq-max(md) {
+  .headerMenu{
+    &__categories{
+      background-color: transparent !important;
+      li{
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+
 
