@@ -1,12 +1,12 @@
-<div class="headerMenu" *ngIf="data">  
-  <div class="headerMenu__boxButtons">
+<div class="headerMenu" *ngIf="data">
+  <div class="headerMenu__boxButtons" [style.background-color]="colorselect">
     <div class="headerMenu__buttons">
-      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)"> 
+      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)">
         {{menu.attributes.title}}
         <mat-icon>expand_more</mat-icon>
       </button>
     </div>
-  </div>  
+  </div>
   <mat-accordion class="headerMenu__top">
     <mat-expansion-panel *ngFor="let menu of data; let i = index"
       [expanded]="openItemParent === i"
@@ -14,26 +14,27 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{menu.attributes.title}}
-        </mat-panel-title>        
+        </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="headerMenu__subMenu">
         <!-- Change Background -->
         <div class="background">
-          <picture>              
+          <picture>
               <img src="{{urlSite + menu.attributes.backgroundImage.data.attributes.url}}" alt="" />
           </picture>
         </div>
         <div  class="headerMenu__content">
-          <ul 
+          <ul
           class="headerMenu__categories headerMenu__bk-business"
           [style.background-color]="menu.attributes.backgroundColor"
-          >           
-            <li 
-            *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index" 
-            class="activeCategory headerMenu__categories-meetcolombiaDesktop" 
+          >
+            <li
+            *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index"
+            class="headerMenu__categories-meetcolombiaDesktop"
             (click)="toogleSubMenu(isub)"
             [style.background-color]="subMenu.color"
-            > 
+            [ngClass]="{activeCategory:openItemSubParent === isub}"
+            >
               <div class="headerMenu__categories-information">
                 <div class="headerMenu__categories-title headerMenu__categories-meetcolombia">
                   <span class="headerMenu__categories-identificator" [style.background-color]="subMenu.color"></span>
@@ -41,17 +42,17 @@
                 </div>
                 <p class="headerMenu__categories-description">{{subMenu.description}}</p>
               </div>
-              <mat-icon>chevron_right</mat-icon>              
-            </li>           
+              <mat-icon>chevron_right</mat-icon>
+            </li>
           </ul>
-          <div 
-          *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index" 
-          class="headerMenu__children" 
+          <div
+          *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index"
+          class="headerMenu__children"
           [ngClass]="{open:openItemSubParent === isub}"
           >
            <!-- Change Background Aquí el background cambia de acuerdo a la categoría-->
             <div class="background">
-                  <picture>              
+                  <picture>
                       <img src="{{urlSite + subMenu.backgroundImage.data.attributes.url}}" alt="" />
                   </picture>
             </div>
@@ -67,7 +68,7 @@
                 <mat-icon class="close"  (click)="closeAll()">close</mat-icon>
               </div>
               <div  class="headerMenu__children-grid">
-                <div 
+                <div
                   class="headerMenu__children-content"
                   *ngFor="let item of subMenu.items"
                 >
@@ -77,26 +78,26 @@
                     <p>{{link.text}}</p>
                     <mat-icon>open_in_new</mat-icon>
                   </a>
-                </div>           
+                </div>
               </div>
             </div>
             <div class="headerMenu__childrenLeft headerMenu__childrenLeft-meetcolombiaBorder" [style.border-right-color]="subMenu.color">
-              <picture>                  
+              <picture>
                 <img src="{{urlSite + menu.attributes.logo.data.attributes.url}}" alt="" width="254" height="46"/>
-              </picture>    
+              </picture>
               <div class="headerMenu__childrenLeft-description">
                 {{menu.attributes.description}}
-              </div>      
+              </div>
               <a href="{{menu.attributes.UrlSite.url}}" class="headerMenu__childrenLeft-link">{{menu.attributes.UrlSite.text}} ></a>
             </div>
           </div>
           <div class="headerMenu__bottom">
-            <picture>              
+            <picture>
               <img src="{{urlSite + menu.attributes.logoFooter.data.attributes.url}}" alt="" width="228" height="37"/>
-            </picture>    
+            </picture>
             <div class="headerMenu__bottom-description">
               <p>{{menu.attributes.description}}</p>
-            </div>      
+            </div>
             <a class="headerMenu__bottom-link">Visitar sitio web ></a>
           </div>
         </div>
@@ -104,6 +105,5 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-  
 
-  
+

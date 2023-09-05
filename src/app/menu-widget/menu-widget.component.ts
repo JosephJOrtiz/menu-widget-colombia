@@ -17,13 +17,11 @@ import {
   styleUrls: ['./menu-widget.component.scss'],
 })
 export class MenuWidgetComponent implements OnInit {
-  @Input() color: string = '';
-  public text: string = 'hola';
   public data:any  = false;
-  isMenuOpen: boolean = true;
   mainOptions!: MenuOptions;
   subOptions: MenuSubOptions[] = [];
-  insideOptions: MenuInsideOptions[] = []; 
+  insideOptions: MenuInsideOptions[] = [];
+  colorselect:string  = '#202020';
 
   openItemParent:null|number = null;
   openItemSubParent:null|number = null;
@@ -48,8 +46,10 @@ export class MenuWidgetComponent implements OnInit {
     this.openItemSubParent = null;
     if(this.openItemParent === index) {
       this.openItemParent = null;
+      this.colorselect  = '#202020';
     }
     else {
+      this.colorselect = this.data[index].attributes.backgroundColor;
       this.openItemParent = index;
     }
   }
