@@ -362,6 +362,9 @@
     display: none;
   }
   .headerMenu{
+    mat-expansion-panel{
+      background:transparent;    
+    }
     &__boxButtons{
       position: relative;
       z-index: 9;
@@ -415,7 +418,7 @@
       }
       li{
         padding: 1.3rem 1.2rem;
-        &:hover, &.activeCategory{  
+        &:hover{  
           .headerMenu__categories-title{
             color:inherit !important;
             font-size: 1.6rem;
@@ -514,6 +517,7 @@
         cursor:pointer;
       }
       &-information{
+        background: color(grayscale, white);   
         order:2;
         padding: 2rem;
         padding: 2.5rem 3rem;
