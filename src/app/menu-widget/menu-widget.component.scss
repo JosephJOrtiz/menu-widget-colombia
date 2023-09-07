@@ -418,7 +418,7 @@
         padding: 1.3rem 1.2rem;
         position: relative;       
         z-index: 9;
-        &:after{
+        /* &:after{
           content: '';
           background: rgb(0, 100, 176);
           display: block;
@@ -430,9 +430,9 @@
           top:0;
           width: 100%;
           z-index: -1;
-        } 
+        }  */
         &:hover, &.activeCategory{ 
-          &:after{
+          /* &:after{
             content: '';
             background: rgb(0, 100, 176);
             display: block;
@@ -443,12 +443,12 @@
             transition: all 0.5s ease-out;
             top:0;
             width: 100%;
-          } 
+          }  */
           .headerMenu__categories-title{        
             color:inherit !important;
             font-size: 1.6rem;
           }
-          &.headerMenu__categories-meetcolombiaDesktop{            
+          /* &.headerMenu__categories-meetcolombiaDesktop{            
             background: color(base,meetcolombia);                       
           }
           &.headerMenu__categories-secondexportationsDesktop{
@@ -465,7 +465,7 @@
           }
           &.headerMenu__categories-visitcolombiaDesktop{
             background: color(base,visitcolombia);              
-          }
+          } */
         }
         mat-icon{
           transform: rotate(90deg);

@@ -25,8 +25,6 @@ export class MenuWidgetComponent implements OnInit {
 
   openItemParent:null|number = null;
   openItemSubParent:null|number = null;
-  open1: boolean=false;
-  open2: boolean=false;
   urlSite = environment.url;
   constructor(
     private menuService: MenuService,
@@ -53,15 +51,7 @@ export class MenuWidgetComponent implements OnInit {
     else {
       this.colorselect = this.data[index].attributes.backgroundColor;
       this.openItemParent = index;
-    }
-    if(index==0){
-      this.open2= false;
-      this.open1 = !this.open1;      
-    }
-    else{
-      this.open1= false;
-      this.open2 = !this.open2;      
-    }    
+    } 
   }
 
   toogleSubMenu(index: number):void {
@@ -82,5 +72,16 @@ export class MenuWidgetComponent implements OnInit {
   closeAll(){
     this.openItemParent = null;
     this.openItemSubParent = null;
+  }
+
+  onMouseEnter(parenItem: HTMLElement, color:string) {
+    parenItem.style.backgroundColor = color;
+  }
+
+  onMouseOut(parenItem: HTMLElement, color:string, active:any) {
+    if(active !== this.openItemSubParent) {
+      parenItem.style.backgroundColor = color;  
+    }
+    
   }
 }

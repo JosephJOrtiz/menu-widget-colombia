@@ -1,7 +1,7 @@
 <div class="headerMenu" *ngIf="data">
-  <div class="headerMenu__boxButtons" [style.background-color]="colorselect">
+  <div class="headerMenu__boxButtons" [style.background-color]="colorselect" [class]="openItemParent !== null ? 'active' : ''">
     <div class="headerMenu__buttons">
-      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)" [ngClass]="{'active': (i==0?open1:open2)}">
+      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)" [class]="openItemParent == i ? 'active' : ''">
         {{menu.attributes.title}}
         <mat-icon>expand_more</mat-icon>
       </button>
@@ -27,13 +27,17 @@
           <ul
           class="headerMenu__categories headerMenu__bk-business"
           [style.background-color]="menu.attributes.backgroundColor"
+          [class]="openItemSubParent !== null ? 'active' : ''"
           >
             <li
             *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index"
-            class="headerMenu__categories-meetcolombiaDesktop"
+            class="submenu_items headerMenu__categories-meetcolombiaDesktop"
             (click)="toogleSubMenu(isub)"
-            [style.background-color]="subMenu.color"
+            [style.background-color]="openItemSubParent === isub ? subMenu.color : menu.attributes.backgroundColor"
             [ngClass]="{activeCategory:openItemSubParent === isub}"
+            #parenItem
+            (mouseenter)="onMouseEnter(parenItem, subMenu.color)"
+            (mouseleave)="onMouseOut(parenItem, menu.attributes.backgroundColor, isub)"
             >
               <div class="headerMenu__categories-information">
                 <div class="headerMenu__categories-title headerMenu__categories-meetcolombia">
@@ -47,7 +51,7 @@
           </ul>
           <div
           *ngFor="let subMenu of menu.attributes.SubMenu; let isub = index"
-          class="headerMenu__children"
+          class="content_info_element headerMenu__children"
           [ngClass]="{open:openItemSubParent === isub}"
           >
            <!-- Change Background Aquí el background cambia de acuerdo a la categoría-->
