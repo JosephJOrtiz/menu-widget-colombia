@@ -1,7 +1,7 @@
 <div class="headerMenu" *ngIf="data">
   <div class="headerMenu__boxButtons" [style.background-color]="colorselect">
     <div class="headerMenu__buttons">
-      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)">
+      <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)" [ngClass]="{'active': (i==0?open1:open2)}">
         {{menu.attributes.title}}
         <mat-icon>expand_more</mat-icon>
       </button>
