@@ -78,7 +78,7 @@
                 >
                   <div class="headerMenu__children-subtitle">{{ item.title}}</div>
                   <div class="headerMenu__children-description">{{ item.description}}</div>
-                  <a *ngFor="let link of item.links" href="{{link.url}}" class="headerMenu__children-link">
+                  <a *ngFor="let link of item.links" href="{{link.url}}" class="headerMenu__children-link" target="_blank">
                     <p>{{link.text}}</p>
                     <mat-icon>open_in_new</mat-icon>
                   </a>
@@ -92,7 +92,7 @@
               <div class="headerMenu__childrenLeft-description">
                 {{menu.attributes.description}}
               </div>
-              <a href="{{menu.attributes.UrlSite.url}}" class="headerMenu__childrenLeft-link">{{menu.attributes.UrlSite.text}} ></a>
+              <a target="_blank" href="{{menu.attributes.UrlSite.url}}" class="headerMenu__childrenLeft-link">{{menu.attributes.UrlSite.text}} ></a>
             </div>
           </div>
           <div class="headerMenu__bottom">
@@ -102,7 +102,7 @@
             <div class="headerMenu__bottom-description">
               <p>{{menu.attributes.description}}</p>
             </div>
-            <a class="headerMenu__bottom-link">Visitar sitio web ></a>
+            <a href="{{menu.attributes.UrlSite.url}}" target="_blank" class="headerMenu__bottom-link">{{menu.attributes.UrlSite.text}} > </a>
           </div>
         </div>
       </div>

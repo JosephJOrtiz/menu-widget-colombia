@@ -10,6 +10,7 @@ import {
   MenuSubOptions,
   MenuWidgetInterface,
 } from '../interfaces/menu.interface';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-menu-widget',
@@ -29,17 +30,32 @@ export class MenuWidgetComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     private setDTO: SetmenuDTOService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.menuService.fetchMenuData().subscribe((response: any) => {
-      this.data = response.data
-    },
-    error => {
-      this.data = false;
-      const bodyTag = document.body;
-      bodyTag.style.height = '0px';
+    this.route.queryParams.subscribe(params => {
+      if (params.language) {
+        this.menuService.fetchMenuData(params.language).subscribe((response: any) => {
+          if(response.data.length) {
+            this.data = response.data;
+            console.log(response.data)
+          }
+          else {
+            this.data = false;
+            const bodyTag = document.body;
+            bodyTag.style.height = '0px';
+          }
+          
+        },
+        error => {
+          this.data = false;
+          const bodyTag = document.body;
+          bodyTag.style.height = '0px';
+        });
+      }
     });
+    
   }
 
   toggleMenu(index: number) {
