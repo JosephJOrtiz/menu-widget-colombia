@@ -2,7 +2,7 @@
   <div class="headerMenu__boxButtons" [style.background-color]="colorselect" [class]="openItemParent !== null ? 'active' : ''">
     <div class="headerMenu__buttons">
       <button *ngFor="let menu of data; let i = index"(click)="toggleMenu(i)" [class]="openItemParent == i ? 'active' : ''">
-        {{menu.attributes.title}}
+        <span> {{menu.attributes.title}} </span>
         <mat-icon>expand_more</mat-icon>
       </button>
     </div>
@@ -23,7 +23,7 @@
               <img src="{{urlSite + menu.attributes.backgroundImage.data.attributes.url}}" alt="" />
           </picture>
         </div>
-        <div  class="headerMenu__content">
+        <div [class]="noScrollMenu == true ? 'headerMenu__content no-scroll' : 'headerMenu__content'">
           <ul
           class="headerMenu__categories headerMenu__bk-business"
           [style.background-color]="menu.attributes.backgroundColor"
@@ -38,11 +38,12 @@
             #parenItem
             (mouseenter)="onMouseEnter(parenItem, subMenu.color)"
             (mouseleave)="onMouseOut(parenItem, menu.attributes.backgroundColor, isub)"
+            (click)="toggleDarkMode()"
             >
-              <div class="headerMenu__categories-information">
+              <div class="headerMenu__categories-information" >
                 <div class="headerMenu__categories-title headerMenu__categories-meetcolombia">
                   <span class="headerMenu__categories-identificator" [style.background-color]="subMenu.color"></span>
-                  {{subMenu.title}}
+                  {{subMenu.title}} 
                 </div>
                 <p class="headerMenu__categories-description">{{subMenu.description}}</p>
               </div>

@@ -23,6 +23,7 @@ export class MenuWidgetComponent implements OnInit {
   subOptions: MenuSubOptions[] = [];
   insideOptions: MenuInsideOptions[] = [];
   colorselect:string  = '#202020';
+  noScrollMenu: boolean = false;
 
   openItemParent:null|number = null;
   openItemSubParent:null|number = null;
@@ -56,6 +57,7 @@ export class MenuWidgetComponent implements OnInit {
 
   toggleMenu(index: number) {
     this.openItemSubParent = null;
+    this.noScrollMenu = false;
     if(this.openItemParent === index) {
       this.openItemParent = null;
       this.colorselect  = '#202020';
@@ -77,14 +79,21 @@ export class MenuWidgetComponent implements OnInit {
   toggleOpen() {
     this.openItemSubParent = null;
   }
+  
   toggleClose() {
     this.openItemSubParent = null;
+    this.noScrollMenu = false;
   } 
 
   closeAll(){
     this.openItemParent = null;
     this.openItemSubParent = null;
   }
+
+  toggleDarkMode() {
+    this.noScrollMenu = !this.noScrollMenu
+  }
+
 
   onMouseEnter(parenItem: HTMLElement, color:string) {
     parenItem.style.backgroundColor = color;
