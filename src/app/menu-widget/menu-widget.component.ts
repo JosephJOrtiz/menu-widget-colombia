@@ -30,30 +30,26 @@ export class MenuWidgetComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     private setDTO: SetmenuDTOService,
-    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      if (params.language) {
-        this.menuService.fetchMenuData(params.language).subscribe((response: any) => {
-          if(response.data.length) {
-            this.data = response.data;
-            console.log(response.data)
-          }
-          else {
-            this.data = false;
-            const bodyTag = document.body;
-            bodyTag.style.height = '0px';
-          }
-          
-        },
-        error => {
-          this.data = false;
-          const bodyTag = document.body;
-          bodyTag.style.height = '0px';
-        });
+    const language = this.getUrlVars();
+    this.menuService.fetchMenuData(language).subscribe((response: any) => {
+      if(response.data.length) {
+        this.data = response.data;
+        console.log(response.data)
       }
+      else {
+        this.data = false;
+        const bodyTag = document.body;
+        bodyTag.style.height = '0px';
+      }
+      
+    },
+    error => {
+      this.data = false;
+      const bodyTag = document.body;
+      bodyTag.style.height = '0px';
     });
     
   }
@@ -99,5 +95,10 @@ export class MenuWidgetComponent implements OnInit {
       parenItem.style.backgroundColor = color;  
     }
     
+  }
+
+  getUrlVars():string {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('language') ?? 'es';
   }
 }
