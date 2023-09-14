@@ -95,7 +95,8 @@
     padding-top: 2rem;
     padding-bottom: 7rem;
     &-title{   
-      font-family: 'Futura';
+      font-family: 'Futura Lt BT';
+      letter-spacing: 1px;
       font-size: 1.6rem;
       font-weight: map-get($weights, bold);
       margin-bottom: .6rem;
