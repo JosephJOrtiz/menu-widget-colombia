@@ -38,7 +38,6 @@ export class MenuWidgetComponent implements OnInit {
     this.menuService.fetchMenuData(language).subscribe((response: any) => {
       if(response.data.length) {
         this.data = response.data;
-        console.log(response.data)
       }
       else {
         this.data = false;
