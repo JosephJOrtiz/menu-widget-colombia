@@ -51,8 +51,7 @@
     position: relative;
     z-index: 9;
   }
-  &__buttons{   
-    color: color(grayscale, white);    
+  &__buttons{      
     display: flex;
     justify-content: space-between;
     padding: 1.6rem;
@@ -61,8 +60,9 @@
     &.bk-blue{ background: color(complementary, primary); }
     &.bk-red{ background: color(base, secondexportations); }
     button{
-      align-items: center;
+      align-items: center;      
       border-right: .1rem solid color(grayscale, white);  
+      color: rgba(color(grayscale, white), 0.8);    
       display: flex;  
       cursor: pointer;
       font-family: 'Futura Bk BT';
@@ -78,6 +78,7 @@
       }
       mat-icon { transition: all .5s; }
       &.active{
+        color: color(grayscale, white);
         font-weight: map-get($weights, bold);
         mat-icon {
           transform: rotate(180deg);
@@ -374,7 +375,6 @@
         margin-bottom: 0;   
         font-family: 'Futura Bk BT';
         font-weight: 500;
-
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -392,7 +392,7 @@
         position: relative;    
         width: fit-content;   
         z-index: 9;        
-            mat-icon{
+        mat-icon{
           transform: rotate(90deg);
           transition: all .5s;
         }
@@ -400,6 +400,7 @@
           .headerMenu__categories-title{        
             color:inherit !important;
             font-size: 1.6rem;
+            font-weight: 700;
           }
         }
         &.activeCategory{ 
