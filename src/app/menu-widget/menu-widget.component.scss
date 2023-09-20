@@ -17,15 +17,16 @@
   } 
   &__subMenu{
     color: color(grayscale, white);  
-    // height: 100vh;
+    background: red;   
+    height: 100lvh;
+    max-height: 100lvh;
+    min-height: 100lvh;
   }
   &__content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;   
-    height: 100lvh;
-    max-height: 100lvh;
-    min-height: 100lvh;
+    height: 100%;
     overflow: hidden scroll;
     position:relative;
     z-index: 9;
