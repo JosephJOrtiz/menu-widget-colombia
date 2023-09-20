@@ -17,20 +17,17 @@
   } 
   &__subMenu{
     color: color(grayscale, white);  
-    height: 100svh;
-    max-height: 100svh;
-    min-height: 100svh;
+    height: 100vh;
   }
   &__content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;   
     height: 100%;
-    overflow: hidden scroll;
+    justify-content: space-between;    
+    overflow: auto;
     position:relative;
     z-index: 9;
-    /* &.no-scroll { overflow: hidden;} */
-  }
+    &.no-scroll { overflow: hidden;}
   &__content, .background {
     &::after {
       background: rgba(color(grayscale, black), .5);
