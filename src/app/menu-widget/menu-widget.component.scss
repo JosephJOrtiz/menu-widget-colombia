@@ -27,6 +27,7 @@
     overflow: scroll;
     position:relative;
     z-index: 9;
+    -webkit-overflow-scrolling: touch
     /* &.no-scroll { overflow: hidden;} */
   }
   &__content, .background {
