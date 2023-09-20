@@ -17,17 +17,14 @@
   } 
   &__subMenu{
     color: color(grayscale, white);  
-    min-height: 100vh;
-    overflow: scroll;
+    height: 100vh;
   }
   &__content{
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;    
-    max-height: 100vh;
-    min-height: 100vh;
-    overflow: auto;
+    overflow: scroll;
     position:relative;
     z-index: 9;
     /* &.no-scroll { overflow: hidden;} */
@@ -366,8 +363,7 @@
       }
     }
     &__content{
-      min-height: inherit;
-      overflow: auto;
+      overflow: inherit;
       &::after{display: none;}
     }
     &__top{
