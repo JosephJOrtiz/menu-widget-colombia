@@ -17,10 +17,9 @@
   } 
   &__subMenu{
     color: color(grayscale, white);  
-    background: red;   
-    height: 100lvh;
-    max-height: 100lvh;
-    min-height: 100lvh;
+    height: 100svh;
+    max-height: 100svh;
+    min-height: 100svh;
   }
   &__content{
     display: flex;
