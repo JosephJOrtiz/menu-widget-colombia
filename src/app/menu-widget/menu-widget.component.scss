@@ -17,7 +17,8 @@
   } 
   &__subMenu{
     color: color(grayscale, white);  
-    height: 100vh;
+    max-height: 100vh;
+    overflow: scroll;
   }
   &__content{
     display: flex;
